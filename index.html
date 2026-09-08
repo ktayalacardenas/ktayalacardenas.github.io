@@ -3,52 +3,322 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Engineering Portfolio</title>
+  <title>Kelly Ayala Cardenas | Engineering Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
   <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: rgba(18, 24, 38, 0.7);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(56, 189, 248, 0.4);
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: system-ui, -apple-system, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
-      color: #222;
+      overflow-x: hidden;
+      position: relative;
     }
-    h1 { margin-bottom: 0.2em; }
-    .subtitle { color: #555; margin-top: 0; }
+
+    canvas#neural-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header / Hero */
+    header {
+      margin-bottom: 64px;
+    }
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 16px;
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin-bottom: 24px;
+    }
+    .links-bar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #041019;
+      font-weight: 600;
+    }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-outline {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    /* Section Headings */
+    h2.section-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2.section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Project Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 64px;
+    }
     .project-card {
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 18px;
-      margin-top: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
     }
-    .badge {
-      display: inline-block;
-      background: #eee;
+    .project-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 10px 30px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .project-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 3px 8px;
       border-radius: 4px;
-      padding: 2px 8px;
-      font-size: 0.8em;
-      margin-right: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--accent);
+    }
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    .project-highlights {
+      list-style: none;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      display: grid;
+      gap: 6px;
+    }
+    .project-highlights li::before {
+      content: "▹";
+      color: var(--accent);
+      margin-right: 8px;
     }
   </style>
 </head>
 <body>
-  <h1>Hello, I'm Kelly Ayala Cardenas</h1>
-  <p class="subtitle">Electrical Engineering & Neurotechnology Researcher</p>
-  
-  <h2>Featured Projects</h2>
-  <div class="project-card">
-    <h3>Automated Rodent Behavior Box</h3>
-    <span class="badge">Arduino</span>
-    <span class="badge">KiCad</span>
-    <span class="badge">C++</span>
-    <p>Custom behavioral tracking rig using infrared beam-break sensors and motor-controlled enclosures.</p>
+
+  <!-- Neural Net Visual Canvas -->
+  <canvas id="neural-bg"></canvas>
+
+  <div class="container">
+    <header>
+      <div class="badge-status">
+        <span class="status-dot"></span> Available for Research & Hardware Roles
+      </div>
+      <h1>Kelly Ayala Cardenas</h1>
+      <p class="subtitle">Electrical Engineering & Neurotechnology Researcher. Focused on biomedical instrumentation, neural interfaces, and embedded systems.</p>
+      <div class="links-bar">
+        <a href="mailto:your-email@example.com" class="btn btn-primary">Contact Me</a>
+        <a href="#" class="btn btn-outline">Resume PDF</a>
+        <a href="https://github.com" target="_blank" class="btn btn-outline">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" class="btn btn-outline">LinkedIn</a>
+      </div>
+    </header>
+
+    <h2 class="section-title">Selected Projects</h2>
+    <div class="grid">
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3 class="project-title">Automated Rodent Behavior Chamber</h3>
+          <div class="project-tags">
+            <span class="tag">KiCad</span>
+            <span class="tag">C++ / Arduino</span>
+            <span class="tag">Hardware Prototyping</span>
+          </div>
+        </div>
+        <p class="project-desc">Engineered an automated experimental chamber designed for precise behavioral tracking and motor recovery experiments.</p>
+        <ul class="project-highlights">
+          <li>Integrated infrared beam-break arrays for sub-millisecond motion detection.</li>
+          <li>Designed custom printed circuit boards (PCBs) and motor controller drivers in KiCad.</li>
+          <li>Programmed state-machine firmware in C++ for automated door actuators and trial logging.</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h3 class="project-title">Neural Signal Propagation & Demyelination Simulation</h3>
+          <div class="project-tags">
+            <span class="tag">MATLAB</span>
+            <span class="tag">LTspice</span>
+            <span class="tag">Circuit Analysis</span>
+          </div>
+        </div>
+        <p class="project-desc">Developed circuit models and simulation environments to quantify the degradation of electrical action potentials across demyelinated axons.</p>
+        <ul class="project-highlights">
+          <li>Modeled multi-compartment active cable equations to study conduction velocity and latency shifts.</li>
+          <li>Simulated multi-stage active filter networks in LTspice to isolate low-frequency neural artifacts.</li>
+          <li>Processed electrophysiological time-series data using custom MATLAB signal extraction scripts.</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 
-  <div class="project-card">
-    <h3>Neural Signal Modeling & Demyelination</h3>
-    <span class="badge">MATLAB</span>
-    <span class="badge">Circuit Design</span>
-    <p>Hardware simulation of action potential propagation under varying degrees of myelin degradation.</p>
-  </div>
+  <script>
+    // Lightweight animated neural web background
+    const canvas = document.getElementById('neural-bg');
+    const ctx = canvas.getContext('2d');
+    let width, height, nodes = [];
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Node {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 1.5 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = '#38bdf8';
+        ctx.fill();
+      }
+    }
+
+    const nodeCount = Math.floor(window.innerWidth / 20);
+    for (let i = 0; i < Math.min(nodeCount, 60); i++) nodes.push(new Node());
+
+    function loop() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < nodes.length; i++) {
+        nodes[i].update();
+        nodes[i].draw();
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist / 130)})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(loop);
+    }
+    loop();
+  </script>
 </body>
 </html>
