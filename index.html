@@ -1,439 +1,1171 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kelly Ayala Cardenas</title>
+  <meta name="description" content="Kelly Ayala Cardenas — Electrical Engineering, neurotechnology, and hands-on research.">
+  <title>Kelly Ayala Cardenas | Engineering Portfolio</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #111111;
-      --text-muted: #666666;
-      --border: #e5e5e5;
-      --card-bg: #f7f7f8;
+      --bg: #fafaf8;
+      --white: #ffffff;
+      --text: #1b2521;
+      --muted: #57635d;
+      --light: #77817b;
+      --border: #dce2dd;
+      --green: #315c50;
+      --pale: #eaf0eb;
+      --figure: #eef2ed;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: var(--bg);
+      margin: 0;
+      background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
     }
 
-    .wrapper {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 40px 24px 100px;
+    a {
+      color: inherit;
     }
 
-    /* TOP MINIMALIST NAV */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 34px;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      border-bottom: 1px solid var(--border);
+    }
+
     nav {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 70px;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 26px 0;
     }
 
-    .nav-brand {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text);
+    .logo {
+      font-size: 15px;
+      font-weight: 700;
       text-decoration: none;
+      letter-spacing: -0.03em;
     }
 
     .nav-links {
       display: flex;
-      gap: 24px;
-      list-style: none;
+      flex-wrap: wrap;
+      gap: 26px;
     }
 
     .nav-links a {
-      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
       text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 400;
-      transition: color 0.15s ease;
     }
 
     .nav-links a:hover {
-      color: var(--text);
+      color: var(--green);
     }
 
-    /* HERO INTRO */
+    /* INTRODUCTION */
+
     .hero {
-      margin-bottom: 60px;
-      max-width: 680px;
+      padding: 90px 0;
+      display: grid;
+      grid-template-columns: 1.65fr 0.75fr;
+      gap: 65px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
     }
 
     .hero h1 {
-      font-size: 2.25rem;
+      font-size: clamp(36px, 4.6vw, 58px);
+      line-height: 1.14;
+      letter-spacing: -0.055em;
       font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-      margin-bottom: 16px;
-      color: var(--text);
+      margin: 22px 0 25px;
     }
 
     .hero p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      line-height: 1.6;
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 660px;
     }
 
-    /* SECTION HEAD */
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+    .hero p strong {
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px;
+      margin-top: 30px;
+    }
+
+    .text-link {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--green);
+      text-decoration: none;
+      border-bottom: 1px solid var(--green);
+      padding-bottom: 3px;
+    }
+
+    .quick-facts {
+      padding-left: 27px;
+      border-left: 1px solid var(--border);
+    }
+
+    .fact {
+      margin-bottom: 25px;
+    }
+
+    .fact:last-child {
+      margin-bottom: 0;
+    }
+
+    .fact-label {
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 24px;
+      letter-spacing: 0.13em;
+      color: var(--light);
+      font-size: 10px;
+      font-weight: 700;
     }
 
-    /* PROJECTS 2-COLUMN PHOTO GRID */
-    .projects-grid {
+    .fact-value {
+      margin-top: 6px;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    /* SECTION HEADINGS */
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* PROJECT GRID */
+
+    .projects {
+      padding-bottom: 90px;
+    }
+
+    .project-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 36px 28px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 40px 28px;
     }
 
-    @media (max-width: 720px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      nav { margin-bottom: 40px; }
-      .hero h1 { font-size: 1.85rem; }
+    .project-card {
+      min-width: 0;
     }
 
-    .project-item {
-      cursor: pointer;
-      group: relative;
+    .project-card a {
+      text-decoration: none;
+      display: block;
     }
 
-    .image-frame {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background-color: var(--card-bg);
+    .project-image {
+      position: relative;
+      aspect-ratio: 1.55;
       border: 1px solid var(--border);
-      border-radius: 4px;
+      border-radius: 7px;
+      background: var(--figure);
       overflow: hidden;
       display: flex;
-      align-items: center;
       justify-content: center;
-      position: relative;
-      transition: border-color 0.2s ease;
+      align-items: center;
+      transition: transform 0.2s, border-color 0.2s;
     }
 
-    .project-item:hover .image-frame {
-      border-color: #111;
+    .project-card a:hover .project-image {
+      transform: translateY(-3px);
+      border-color: var(--green);
     }
 
-    .image-placeholder {
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .placeholder {
+      width: 100%;
+      height: 100%;
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      gap: 14px;
       text-align: center;
-      padding: 20px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
+      color: var(--green);
     }
 
-    .image-placeholder svg {
-      margin-bottom: 10px;
-      stroke: #999;
+    .placeholder svg {
+      width: 100%;
+      max-width: 330px;
+      max-height: 185px;
+    }
+
+    .placeholder-label {
+      color: var(--light);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .project-meta {
-      margin-top: 14px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--light);
+      margin-top: 17px;
     }
 
     .project-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-      display: inline-block;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.15s ease;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -0.03em;
+      margin: 6px 0;
     }
 
-    .project-item:hover .project-title {
-      border-color: var(--text);
+    .project-description {
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin: 5px 0;
     }
 
-    .project-sub {
-      color: var(--text-muted);
-      font-size: 0.86rem;
-      margin-top: 4px;
+    /* PROJECT CASE STUDIES */
+
+    .details {
+      padding: 70px 0 35px;
+      border-top: 1px solid var(--border);
     }
 
-    /* IN-DEPTH CASE STUDY OVERLAY */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 100;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+    .details-intro {
+      color: var(--muted);
+      max-width: 700px;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 35px;
     }
 
-    .overlay.active {
-      display: flex;
+    .case-study {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 50px;
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+      scroll-margin-top: 25px;
     }
 
-    .modal-box {
-      background: #ffffff;
-      width: 100%;
-      max-width: 760px;
-      max-height: 90vh;
-      overflow-y: auto;
-      border-radius: 6px;
-      padding: 44px;
-      position: relative;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    .case-study:nth-of-type(even) .case-image {
+      order: 2;
     }
 
-    .close-btn {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      background: none;
-      border: none;
-      font-size: 1.25rem;
-      cursor: pointer;
-      color: var(--text-muted);
-      padding: 6px;
-      line-height: 1;
+    .case-study:nth-of-type(even) .case-content {
+      order: 1;
     }
 
-    .close-btn:hover { color: var(--text); }
+    .case-image {
+      align-self: start;
+    }
 
-    .modal-pretitle {
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
+    .case-image .project-image {
+      aspect-ratio: 1.2;
+    }
+
+    .image-caption {
+      color: var(--light);
+      font-size: 11px;
+      margin-top: 11px;
+    }
+
+    .case-label {
+      font-size: 11px;
       text-transform: uppercase;
-      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .case-content h3 {
+      font-size: 27px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.3;
+      margin: 12px 0 18px;
+    }
+
+    .case-content p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin: 0 0 16px;
+    }
+
+    .case-content p strong {
+      color: var(--text);
+    }
+
+    .case-content h4 {
+      font-size: 13px;
+      margin: 24px 0 10px;
+    }
+
+    .case-content ul {
+      padding-left: 19px;
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .case-content li {
       margin-bottom: 6px;
     }
 
-    .modal-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-    }
-
-    .case-section {
-      margin-top: 24px;
-      border-top: 1px solid var(--border);
-      padding-top: 20px;
-    }
-
-    .case-section h4 {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .case-section ul {
-      list-style-type: square;
-      padding-left: 20px;
-      color: #333333;
-      font-size: 0.92rem;
-      display: grid;
-      gap: 10px;
-    }
-
-    .tools-list {
+    .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-top: 22px;
     }
 
-    .tool-tag {
-      background: #f1f1f2;
-      color: #222;
-      font-size: 0.8rem;
-      padding: 4px 10px;
+    .tag {
+      font-size: 11px;
+      padding: 5px 9px;
+      color: var(--muted);
+      border: 1px solid var(--border);
       border-radius: 3px;
     }
 
-    .photo-shelf {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 16px;
+    .metrics {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 24px 0;
+      padding: 19px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
-    .photo-slot {
-      background: var(--card-bg);
-      border: 1px dashed #d1d5db;
-      border-radius: 4px;
-      padding: 24px 16px;
-      text-align: center;
-      font-size: 0.82rem;
-      color: var(--text-muted);
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--green);
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: var(--pale);
+      padding: 70px 0;
+      margin-top: 30px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr;
+      gap: 85px;
+    }
+
+    .about h2 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: clamp(32px, 3.1vw, 45px);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .about p {
+      font-size: 15px;
+      color: #3e5148;
+      line-height: 1.9;
+      margin: 0 0 17px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 45px 0 60px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    footer strong {
+      font-size: 14px;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 5px 0;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 23px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .quick-facts {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding: 22px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+      }
+
+      .fact {
+        margin: 0;
+      }
+
+      .case-study {
+        gap: 30px;
+      }
+
+      .about-grid {
+        gap: 35px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .case-study,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case-study:nth-of-type(even) .case-image,
+      .case-study:nth-of-type(even) .case-content {
+        order: initial;
+      }
+
+      .case-study {
+        padding: 40px 0;
+      }
+
+      .about {
+        padding: 50px 0;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <div class="wrapper">
-    
-    <!-- TOP NAVIGATION -->
-    <nav>
-      <a href="#" class="nav-brand">Kelly Ayala Cardenas</a>
-      <ul class="nav-links">
-        <li><a href="#projects">Work</a></li>
-        <li><a href="https://www.linkedin.com/in/kellyayalacardenas" target="_blank">LinkedIn ↗</a></li>
-        <li><a href="mailto:kellyayalacardenas@gmail.com">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- NAVIGATION -->
 
-    <!-- CONFIDENT, CLEAN INTRO -->
-    <section class="hero">
-      <h1>I engineer hardware, embedded firmware, and neural signal pipelines.</h1>
-      <p>Undergraduate in Electrical Engineering at the University of Alaska Anchorage. Currently focused on biomedical instrumentation, active circuit modeling, and automated behavioral rigs.</p>
+  <header id="top">
+    <div class="container">
+      <nav>
+        <a class="logo" href="#top">Kelly Ayala Cardenas</a>
+
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="https://www.linkedin.com/in/kellyayalacardenas" target="_blank">LinkedIn ↗</a>
+          <a href="mailto:kellyayalacardenas@gmail.com">Contact ↗</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <div class="container">
+      <section class="hero">
+
+        <div>
+          <div class="eyebrow">Electrical Engineering · Neuroscience</div>
+
+          <h1>I build, test, and troubleshoot hardware for neuroscience research.</h1>
+
+          <p>
+            I'm Kelly, an Electrical Engineering student at the
+            <strong>University of Alaska Anchorage</strong>.
+            I enjoy the whole process of making a system work:
+            wiring it up, figuring out what's wrong, measuring
+            the results, and seeing the pieces finally come together.
+            I'm especially interested in
+            <strong>neural interfaces, electronics, and hands-on R&amp;D</strong>.
+          </p>
+
+          <div class="hero-actions">
+            <a class="text-link" href="#projects">Explore my projects ↓</a>
+            <a class="text-link" href="mailto:kellyayalacardenas@gmail.com">Get in touch ↗</a>
+          </div>
+        </div>
+
+        <aside class="quick-facts">
+          <div class="fact">
+            <div class="fact-label">Education</div>
+            <div class="fact-value">
+              B.S. Electrical Engineering<br>
+              Minors: Neuroscience &amp; Mathematics<br>
+              UAA · GPA 3.96 · Expected 2028
+            </div>
+          </div>
+
+          <div class="fact">
+            <div class="fact-label">Interested in</div>
+            <div class="fact-value">
+              Neural Engineering · Hardware R&amp;D<br>
+              Electronics Testing · Signal Analysis
+            </div>
+          </div>
+
+          <div class="fact">
+            <div class="fact-label">Summer 2027</div>
+            <div class="fact-value">
+              Seeking research and engineering internship opportunities
+            </div>
+          </div>
+        </aside>
+
+      </section>
+    </div>
+
+    <!-- SELECTED PROJECTS -->
+
+    <section class="projects container" id="projects">
+
+      <div class="section-header">
+        <h2 class="section-title">Selected projects</h2>
+        <p class="section-subtitle">The hardware, experiments, and signals I've worked with.</p>
+      </div>
+
+      <div class="project-grid">
+
+        <!-- PROJECT 1 -->
+
+        <article class="project-card">
+          <a href="#washu">
+            <div class="project-image" data-photo="images/washu-behavioral-box.jpg">
+              <div class="placeholder">
+                <svg viewBox="0 0 330 170" fill="none" stroke="#547d6a" stroke-width="2">
+                  <rect x="54" y="20" width="222" height="125" rx="7" fill="#ffffff"/>
+                  <rect x="75" y="40" width="106" height="83" rx="4" fill="#e3ece4"/>
+                  <rect x="201" y="45" width="53" height="40" rx="3" fill="#c4d8ca"/>
+                  <circle cx="224" cy="111" r="15"/>
+                  <path d="M224 111l20-17"/>
+                  <path d="M181 79h20"/>
+                  <circle cx="94" cy="83" r="6" fill="#c99e67"/>
+                  <circle cx="153" cy="83" r="6" fill="#c99e67"/>
+                </svg>
+                <span class="placeholder-label">Behavioral Testing System</span>
+              </div>
+            </div>
+
+            <div class="project-meta">WashU · Summer 2026 · Hardware</div>
+            <h3 class="project-title">When the behavioral system finally worked ↗</h3>
+
+            <p class="project-description">
+              PCB assembly, sensors, servos, Arduino control, and
+              the moment a rat actually used the system I'd helped build.
+            </p>
+          </a>
+        </article>
+
+        <!-- PROJECT 2 -->
+
+        <article class="project-card">
+          <a href="#mcnair">
+            <div class="project-image" data-photo="images/mcnair-arduino.jpg">
+              <div class="placeholder">
+                <svg viewBox="0 0 330 170" fill="none" stroke="#547d6a" stroke-width="2">
+                  <path d="M25 55h270M25 117h270"/>
+                  <path d="M115 55v62M205 55v62" stroke-dasharray="5 5"/>
+                  <circle cx="43" cy="55" r="11" fill="#8cb69a"/>
+                  <circle cx="115" cy="55" r="11" fill="#8cb69a"/>
+                  <circle cx="205" cy="55" r="11" fill="#8cb69a"/>
+                  <circle cx="283" cy="55" r="11" fill="#8cb69a"/>
+                  <circle cx="43" cy="117" r="11" fill="#ffffff"/>
+                  <circle cx="115" cy="117" r="11" fill="#ffffff"/>
+                  <circle cx="205" cy="117" r="11" fill="#ffffff"/>
+                  <circle cx="283" cy="117" r="11" fill="#ffffff"/>
+                </svg>
+                <span class="placeholder-label">Arduino Neural Rerouting Model</span>
+              </div>
+            </div>
+
+            <div class="project-meta">McNair Scholars · 2025–2026</div>
+            <h3 class="project-title">Testing a model of neural signal rerouting ↗</h3>
+
+            <p class="project-description">
+              Arduino, LEDs, servos, 1,457 reliability trials,
+              and a lesson in measuring whether a design actually helps.
+            </p>
+          </a>
+        </article>
+
+        <!-- PROJECT 3 -->
+
+        <article class="project-card">
+          <a href="#neural">
+            <div class="project-image" data-photo="images/neural-analysis.png">
+              <div class="placeholder">
+                <svg viewBox="0 0 330 170" fill="none" stroke="#547d6a" stroke-width="2.5">
+                  <path d="M15 51h24l9-24 13 50 12-68 13 45h38"/>
+                  <path d="M15 97h23l10-21 12 46 12-58 14 34h38"/>
+                  <path d="M15 140h23l10-20 12 37 13-48 15 31h38"/>
+                  <path d="M145 90h40"/>
+                  <path d="M176 83l9 7-9 7"/>
+                  <rect x="200" y="25" width="113" height="116" rx="5" fill="#ffffff"/>
+                  <circle cx="227" cy="71" r="5" fill="#547d6a"/>
+                  <circle cx="251" cy="51" r="5" fill="#547d6a"/>
+                  <circle cx="270" cy="98" r="5" fill="#547d6a"/>
+                  <circle cx="290" cy="65" r="5" fill="#547d6a"/>
+                  <circle cx="242" cy="112" r="5" fill="#547d6a"/>
+                </svg>
+                <span class="placeholder-label">Neural Recordings &amp; Analysis</span>
+              </div>
+            </div>
+
+            <div class="project-meta">WashU · Summer 2026 · Neural Data</div>
+            <h3 class="project-title">Finding meaning in neural and behavioral data ↗</h3>
+
+            <p class="project-description">
+              48-channel neural recordings, spike analysis,
+              PCA, firing rates, and DeepLabCut behavioral tracking.
+            </p>
+          </a>
+        </article>
+
+        <!-- PROJECT 4 -->
+
+        <article class="project-card">
+          <a href="#pwm">
+            <div class="project-image" data-photo="images/pwm-breadboard.jpg">
+              <div class="placeholder">
+                <svg viewBox="0 0 330 170" fill="none" stroke="#547d6a" stroke-width="2">
+                  <rect x="20" y="25" width="290" height="122" rx="6" fill="#ffffff"/>
+                  <rect x="40" y="43" width="135" height="89" rx="4" fill="#e5eee6"/>
+                  <path d="M54 107h21V65h28v42h27V65h28v42"/>
+                  <path d="M186 85h38"/>
+                  <path d="M215 79l9 6-9 6"/>
+                  <path d="M252 75a20 20 0 0 1 33 0l-5 23h-23z" fill="#e4c17d"/>
+                  <path d="M263 99v14M276 99v14"/>
+                </svg>
+                <span class="placeholder-label">Analog PWM LED Controller</span>
+              </div>
+            </div>
+
+            <div class="project-meta">UAA · Spring 2026 · Circuits</div>
+            <h3 class="project-title">Designing and testing an analog PWM controller ↗</h3>
+
+            <p class="project-description">
+              Comparators, transistors, LTspice, breadboarding,
+              and oscilloscope measurements.
+            </p>
+          </a>
+        </article>
+
+      </div>
     </section>
 
-    <!-- PROJECTS GRID -->
-    <div class="section-label" id="projects">Selected Projects</div>
+    <!-- DETAILED PROJECTS -->
 
-    <div class="projects-grid">
+    <section class="details container">
 
-      <!-- PROJECT 1 -->
-      <div class="project-item" onclick="openProject('washu')">
-        <div class="image-frame">
-          <div class="image-placeholder">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <circle cx="8.5" cy="8.5" r="1.5"></circle>
-              <polyline points="21 15 16 10 5 21"></polyline>
-            </svg>
-            <div>Automated Rig & PCB Schematics</div>
+      <h2 class="section-title">A closer look</h2>
+
+      <p class="details-intro">
+        I wanted this page to show more than a list of tools.
+        Here is what I worked on, what I was responsible for,
+        and how I approached the testing and analysis.
+      </p>
+
+      <!-- WASHU HARDWARE -->
+
+      <article class="case-study" id="washu">
+
+        <div class="case-image">
+          <div class="project-image" data-photo="images/washu-electronics.jpg">
+            <div class="placeholder">
+              <svg viewBox="0 0 330 170" fill="none" stroke="#547d6a" stroke-width="2">
+                <rect x="16" y="14" width="138" height="58" rx="5" fill="#ffffff"/>
+                <rect x="176" y="14" width="138" height="58" rx="5" fill="#ffffff"/>
+                <rect x="16" y="101" width="138" height="58" rx="5" fill="#ffffff"/>
+                <rect x="176" y="101" width="138" height="58" rx="5" fill="#ffffff"/>
+                <path d="M154 43h22M154 129h22M85 72v29M245 72v29"/>
+                <text x="49" y="46" font-size="13" fill="#315c50" stroke="none">IR Sensors</text>
+                <text x="211" y="46" font-size="13" fill="#315c50" stroke="none">Arduino</text>
+                <text x="68" y="133" font-size="13" fill="#315c50" stroke="none">PCBs</text>
+                <text x="205" y="133" font-size="13" fill="#315c50" stroke="none">Servo + LCD</text>
+              </svg>
+              <span class="placeholder-label">System Integration</span>
+            </div>
+          </div>
+
+          <p class="image-caption">
+            Conceptual illustration. Replace with a photo of your actual system.
+          </p>
+        </div>
+
+        <div class="case-content">
+          <div class="case-label">Washington University in St. Louis · 2026</div>
+
+          <h3>Helping build a behavioral testing system</h3>
+
+          <p>
+            During my summer research fellowship, I worked on hardware
+            for an automated rodent behavioral testing platform.
+            I <strong>assembled and soldered supplied PCBs</strong>,
+            checked connections and voltages with a digital multimeter,
+            and helped integrate infrared beam-break sensors, servos,
+            an LCD, and Arduino control.
+          </p>
+
+          <p>
+            The most memorable part was seeing a rat interact with
+            the functioning system. Up to that point, I had spent
+            time thinking about individual components and debugging
+            connections. Watching it all work together made that
+            effort tangible.
+          </p>
+
+          <h4>My contribution</h4>
+          <ul>
+            <li>PCB assembly, soldering, electrical testing, and troubleshooting.</li>
+            <li>Integration of sensors and actuators for automated behavioral experiments.</li>
+            <li>System testing and collaboration with researchers.</li>
+            <li>Presented summer research at the 2026 McKelvey Engineering Poster Palooza.</li>
+          </ul>
+
+          <div class="tags">
+            <span class="tag">PCB Assembly</span>
+            <span class="tag">Soldering</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">IR Sensors</span>
+            <span class="tag">Servo Motors</span>
+            <span class="tag">Digital Multimeter</span>
           </div>
         </div>
-        <div class="project-meta">
-          <div class="project-title">Behavioral Test Chamber & Electrophysiology</div>
-          <div class="project-sub">Washington University in St. Louis &bull; Hardware & Neural Data</div>
-        </div>
-      </div>
 
-      <!-- PROJECT 2 -->
-      <div class="project-item" onclick="openProject('mcnair')">
-        <div class="image-frame">
-          <div class="image-placeholder">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-            </svg>
-            <div>Axon Signal Simulator & Breadboard</div>
+      </article>
+
+      <!-- MCNAIR -->
+
+      <article class="case-study" id="mcnair">
+
+        <div class="case-image">
+          <div class="project-image" data-photo="images/mcnair-setup.jpg">
+            <div class="placeholder">
+              <svg viewBox="0 0 330 170" fill="none" stroke="#547d6a" stroke-width="2">
+                <path d="M20 54h290M20 116h290"/>
+                <path d="M108 54v62M202 54v62" stroke-dasharray="5 5"/>
+                <circle cx="38" cy="54" r="11" fill="#8cb69a"/>
+                <circle cx="108" cy="54" r="11" fill="#8cb69a"/>
+                <circle cx="202" cy="54" r="11" fill="#8cb69a"/>
+                <circle cx="290" cy="54" r="11" fill="#8cb69a"/>
+                <circle cx="38" cy="116" r="11" fill="#ffffff"/>
+                <circle cx="108" cy="116" r="11" fill="#ffffff"/>
+                <circle cx="202" cy="116" r="11" fill="#ffffff"/>
+                <circle cx="290" cy="116" r="11" fill="#ffffff"/>
+              </svg>
+              <span class="placeholder-label">Modeled Neural Pathways</span>
+            </div>
+          </div>
+
+          <p class="image-caption">
+            Diagram of the modeled pathways, not biological axons.
+          </p>
+        </div>
+
+        <div class="case-content">
+          <div class="case-label">UAA · McNair Scholars · 2025–2026</div>
+
+          <h3>What happens when a modeled signal takes a different route?</h3>
+
+          <p>
+            For my independent McNair research, I built an
+            Arduino-based system using <strong>two four-node LED pathways
+            and a servo output</strong>. The system modeled how rerouting
+            could affect simulated neural signal transmission under
+            different levels of impairment.
+          </p>
+
+          <p>
+            I developed the experiment, compared rerouting locations,
+            and measured reliability across <strong>1,457 trials</strong>.
+            In the severe-impairment condition, late rerouting raised
+            the model's successful-output rate from approximately
+            14% to 75%.
+          </p>
+
+          <p>
+            This was a physical engineering model, not a test on
+            biological axons. It taught me how to turn an open-ended
+            question into a testable system, define outcomes, and
+            conduct enough trials to evaluate performance.
+            I presented the findings at the 2026 UAA Student Showcase.
+          </p>
+
+          <div class="metrics">
+            <div class="metric">
+              <strong>1,457</strong>
+              <span>Reliability trials</span>
+            </div>
+
+            <div class="metric">
+              <strong>14% → 75%</strong>
+              <span>Successful output, severe model</span>
+            </div>
+          </div>
+
+          <div class="tags">
+            <span class="tag">Arduino</span>
+            <span class="tag">LEDs</span>
+            <span class="tag">Servo Motors</span>
+            <span class="tag">Experiment Design</span>
+            <span class="tag">Reliability Analysis</span>
           </div>
         </div>
-        <div class="project-meta">
-          <div class="project-title">Neural Signal Propagation Simulator</div>
-          <div class="project-sub">McNair Scholars Program &bull; C++ & Embedded Systems</div>
+
+      </article>
+
+      <!-- NEURAL DATA -->
+
+      <article class="case-study" id="neural">
+
+        <div class="case-image">
+          <div class="project-image" data-photo="images/neural-plots.png">
+            <div class="placeholder">
+              <svg viewBox="0 0 330 170" fill="none" stroke="#547d6a" stroke-width="2">
+                <path d="M20 54h20l8-17 12 37 11-52 14 32h44"/>
+                <path d="M20 96h20l8-16 12 34 11-48 14 30h44"/>
+                <path d="M20 137h20l8-16 12 36 11-48 14 28h44"/>
+                <path d="M150 91h30"/>
+                <rect x="197" y="20" width="115" height="127" rx="5" fill="#ffffff"/>
+                <circle cx="230" cy="66" r="5" fill="#547d6a"/>
+                <circle cx="249" cy="49" r="5" fill="#547d6a"/>
+                <circle cx="270" cy="99" r="5" fill="#547d6a"/>
+                <circle cx="290" cy="70" r="5" fill="#547d6a"/>
+              </svg>
+              <span class="placeholder-label">Neural Signal Analysis</span>
+            </div>
+          </div>
+
+          <p class="image-caption">
+            Conceptual illustration, not actual neural data.
+          </p>
         </div>
+
+        <div class="case-content">
+          <div class="case-label">Washington University in St. Louis · 2026</div>
+
+          <h3>Moving from neural signals to questions about behavior</h3>
+
+          <p>
+            At WashU, I also worked with
+            <strong>48-channel neural recordings</strong>,
+            using MATLAB and Python workflows for spike detection
+            and sorting, waveform features, firing-rate analysis,
+            and principal component analysis.
+          </p>
+
+          <p>
+            I trained a <strong>DeepLabCut</strong> model to identify
+            anatomical landmarks in rodent reaching videos.
+            Seeing both sides, the physical behavioral setup and
+            the neural and movement data, made me more interested
+            in how engineers connect measurements to what an
+            animal is actually doing.
+          </p>
+
+          <h4>What I learned</h4>
+          <ul>
+            <li>How neural recordings can be processed into interpretable features.</li>
+            <li>Why behavioral context matters when analyzing neural activity.</li>
+            <li>Why validation is important before trusting an analysis result.</li>
+          </ul>
+
+          <div class="tags">
+            <span class="tag">48-Channel Recordings</span>
+            <span class="tag">Spike Analysis</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">Python Workflows</span>
+            <span class="tag">PCA</span>
+            <span class="tag">DeepLabCut</span>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- PWM -->
+
+      <article class="case-study" id="pwm">
+
+        <div class="case-image">
+          <div class="project-image" data-photo="images/pwm-circuit.jpg">
+            <div class="placeholder">
+              <svg viewBox="0 0 330 170" fill="none" stroke="#547d6a" stroke-width="2">
+                <rect x="20" y="25" width="290" height="122" rx="6" fill="#ffffff"/>
+                <rect x="40" y="45" width="130" height="83" rx="4" fill="#e5eee6"/>
+                <path d="M54 108h20V65h28v43h27V65h26v43"/>
+                <path d="M184 85h41"/>
+                <path d="M217 79l8 6-8 6"/>
+                <path d="M252 75a19 19 0 0 1 32 0l-5 22h-22z" fill="#e4c17d"/>
+                <path d="M262 98v14M276 98v14"/>
+              </svg>
+              <span class="placeholder-label">Analog PWM Circuit</span>
+            </div>
+          </div>
+
+          <p class="image-caption">
+            Add your LTspice schematic, breadboard, or oscilloscope image.
+          </p>
+        </div>
+
+        <div class="case-content">
+          <div class="case-label">UAA · Electronics Design Lab · Spring 2026</div>
+
+          <h3>Designing, building, and measuring an analog PWM circuit</h3>
+
+          <p>
+            For an electronics project, I designed a
+            <strong>12-V analog PWM LED controller</strong> using
+            an RC timing circuit, comparators, and transistor drivers.
+            I tested the design in LTspice and participated in
+            breadboard assembly and troubleshooting.
+          </p>
+
+          <p>
+            We evaluated the physical circuit using an oscilloscope,
+            measuring an oscillation frequency of approximately
+            <strong>0.72 Hz</strong> and an output close to
+            <strong>11.94 V peak-to-peak</strong>.
+          </p>
+
+          <p>
+            Debugging the transistor orientation reinforced an
+            important lesson for me: when a circuit doesn't behave
+            as expected, return to the measurements and investigate
+            the possible causes instead of assuming the design
+            is working correctly.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Analog Circuits</span>
+            <span class="tag">LTspice</span>
+            <span class="tag">Comparators</span>
+            <span class="tag">BJTs</span>
+            <span class="tag">Breadboarding</span>
+            <span class="tag">Oscilloscope</span>
+          </div>
+        </div>
+
+      </article>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+
+        <h2>
+          Curious enough to start.<br>
+          Persistent enough to keep going.
+        </h2>
+
+        <div>
+          <p>
+            I still remember stumbling across a YouTube video
+            of a monkey playing Pong using neural signals.
+            I had never looked into brain-computer interfaces
+            before, and I was genuinely stunned that something
+            like that was possible. It made me think about what
+            engineering could do for people living with paralysis.
+          </p>
+
+          <p>
+            Neuroengineering opportunities are limited in Alaska,
+            so I've made a point of seeking them out, from a summer
+            research fellowship in St. Louis to a neurotechnology
+            conference in New York. My goal is to work on technologies
+            that help people regain abilities and independence.
+          </p>
+
+          <p>
+            In the lab, I'm usually the person trying to understand
+            every possible reason something isn't working. I like
+            figuring things out independently, but I also enjoy
+            talking through problems with a team.
+            Outside research, I support other students as an
+            academic coach and help lead student organizations at UAA.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <div class="container">
+    <footer>
+
+      <div>
+        <strong>Kelly Ayala Cardenas</strong>
+        <p>Electrical Engineering · Anchorage, Alaska</p>
+        <p>Built to share the work behind the projects.</p>
       </div>
 
-    </div>
+      <div class="footer-links">
+        <a href="#top">Back to top ↑</a>
+        <a href="https://www.linkedin.com/in/kellyayalacardenas" target="_blank">LinkedIn ↗</a>
+        <a href="mailto:kellyayalacardenas@gmail.com">Email ↗</a>
+      </div>
 
+    </footer>
   </div>
 
-  <!-- IN-DEPTH PROJECT MODAL -->
-  <div class="overlay" id="overlay" onclick="backdropClose(event)">
-    <div class="modal-box">
-      <button class="close-btn" onclick="closeModal()">✕</button>
-      <div class="modal-pretitle" id="mContext"></div>
-      <h3 class="modal-title" id="mTitle"></h3>
-
-      <div class="case-section">
-        <h4>Tools & Focus Areas</h4>
-        <div class="tools-list" id="mTags"></div>
-      </div>
-
-      <div class="case-section">
-        <h4>Overview & Implementation</h4>
-        <ul id="mBullets"></ul>
-      </div>
-
-      <div class="case-section">
-        <h4>Visual Artifacts</h4>
-        <div class="photo-shelf" id="mPhotos"></div>
-      </div>
-    </div>
-  </div>
+  <!-- IMAGE HANDLING -->
 
   <script>
-    const data = {
-      washu: {
-        context: "Washington University in St. Louis — Summer Engineering Fellowship",
-        title: "Automated Rodent Behavioral Testing Platform & Electrophysiology",
-        tags: ["KiCad", "C++", "DeepLabCut", "MATLAB", "Python", "48-Channel Spike Sorting", "PCA", "Infrared Sensors"],
-        bullets: [
-          "Engineered an automated behavioral testing platform using custom KiCad PCB layouts, microcontroller firmware, and motor control electronics to automate rodent reaching experiments.",
-          "Integrated infrared beam-break sensors, servo actuators, and an LCD interface to automate event detection, actuator control, and behavioral data collection.",
-          "Trained and deployed a DeepLabCut markerless pose estimation model to automatically extract kinematic trajectories and track anatomical landmarks across high-speed behavioral videos.",
-          "Processed 48-channel neural recordings in MATLAB and Python, performing spike detection and sorting, waveform feature extraction, firing-rate analysis, and PCA to characterize neural population dynamics.",
-          "Presented findings at the 2026 McKelvey Engineering Poster Palooza symposium."
-        ],
-        photos: [
-          { title: "Custom PCB & Actuator Rig", note: "KiCad board layout and mechanical enclosure" },
-          { title: "Kinematic Tracking & PCA Plots", note: "DeepLabCut trajectories and population dynamics" }
-        ]
-      },
-      mcnair: {
-        context: "University of Alaska Anchorage — McNair Scholars Program",
-        title: "Neural Signal Propagation & Demyelination Simulator",
-        tags: ["C++", "Arduino", "Circuit Modeling", "Latency Analysis", "LED Propagation Arrays"],
-        bullets: [
-          "Designed and built an embedded hardware simulator using an Arduino microcontroller, LED arrays, and servo actuators to model signal propagation through demyelinated axon pathways.",
-          "Programmed C++ control loops to quantify signal latency, rerouting timing, and transmission failure rates across variable degradation thresholds.",
-          "Analyzed multi-state transmission reliability and presented technical findings to faculty at the 2026 UAA Student Showcase."
-        ],
-        photos: [
-          { title: "Simulator Hardware Rig", note: "Physical breadboard and microcontroller interconnects" },
-          { title: "Conduction Latency Data", note: "Signal delay measurements vs. degradation rate" }
-        ]
-      }
-    };
+    /*
+      HOW TO ADD YOUR REAL PROJECT PHOTOS:
 
-    function openProject(key) {
-      const p = data[key];
-      document.getElementById('mContext').innerText = p.context;
-      document.getElementById('mTitle').innerText = p.title;
-      document.getElementById('mTags').innerHTML = p.tags.map(t => `<span class="tool-tag">${t}</span>`).join('');
-      document.getElementById('mBullets').innerHTML = p.bullets.map(b => `<li>${b}</li>`).join('');
-      document.getElementById('mPhotos').innerHTML = p.photos.map(ph => `
-        <div class="photo-slot">
-          <strong>${ph.title}</strong>
-          <div>${ph.note}</div>
-        </div>
-      `).join('');
-      
-      document.getElementById('overlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+      1. Create a folder called "images" in your GitHub repository.
+      2. Upload your project photos into that folder.
+      3. Match the filenames used in the HTML above.
 
-    function closeModal() {
-      document.getElementById('overlay').classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
+      For example:
+        images/washu-behavioral-box.jpg
+        images/mcnair-arduino.jpg
+        images/neural-analysis.png
+        images/pwm-breadboard.jpg
 
-    function backdropClose(e) {
-      if (e.target.id === 'overlay') closeModal();
-    }
+      If the image exists, it replaces the illustration.
+      If it does not exist yet, the illustration stays visible.
+
+      Only publish lab photos and research data that
+      you have permission to share.
+    */
+
+    document.querySelectorAll(".project-image[data-photo]").forEach(function(box) {
+      const source = box.getAttribute("data-photo");
+
+      if (!source) return;
+
+      const image = new Image();
+      image.loading = "lazy";
+      image.alt = "Engineering project photograph";
+
+      image.onload = function() {
+        box.innerHTML = "";
+        box.appendChild(image);
+      };
+
+      image.src = source;
+    });
   </script>
+
 </body>
 </html>
